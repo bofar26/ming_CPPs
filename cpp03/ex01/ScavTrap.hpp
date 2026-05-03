@@ -1,0 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mipang <mipang@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/14 18:10:46 by mipang            #+#    #+#             */
+/*   Updated: 2026/04/14 19:15:25 by mipang           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
+
+#include "ClapTrap.hpp"
+
+class ScavTrap: public ClapTrap{
+	public:
+		ScavTrap();
+		~ScavTrap();
+		ScavTrap(const std::string& name);
+		void	attack(const std::string& target);
+		void	guardGate();
+};
+
+# endif
