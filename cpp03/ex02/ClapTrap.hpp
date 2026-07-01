@@ -14,6 +14,7 @@
 #define CLAPTRAP_HPP
 
 #include <iostream>
+#include <string>
 
 class ClapTrap{
 	protected:
@@ -22,6 +23,7 @@ class ClapTrap{
 		int	energy_points;
 		int	attack_damage;
 	public:
+		ClapTrap();
 		ClapTrap(const std::string& name);
 		ClapTrap(const ClapTrap& other);
 		~ClapTrap();

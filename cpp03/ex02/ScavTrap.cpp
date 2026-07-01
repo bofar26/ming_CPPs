@@ -19,10 +19,12 @@ ScavTrap::ScavTrap() : ClapTrap("default")
 	this -> attack_damage = 20;
 	std::cout << "ScavTrap default is created." << std::endl;
 }
+
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << name << " is destroyed." << std::endl;
 }
+
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
 {
 	this -> hit_points = 100;
@@ -30,6 +32,20 @@ ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
 	this -> attack_damage = 20;
 	std::cout << "ScavTrap " << name << " is created." << std::endl;
 }
+
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
+{
+	std::cout << "ScavTrap " << name << " is copied." << std::endl;
+}
+
+ScavTrap&	ScavTrap::operator=(const ScavTrap& other)
+{
+	if (this != &other)
+		ClapTrap::operator=(other);
+	std::cout << "ScavTrap " << name << " is assigned." << std::endl;
+	return *this;
+}
+
 void	ScavTrap::attack(const std::string& target)
 {
 	if (hit_points <= 0 || energy_points <= 0)
@@ -49,19 +65,8 @@ void	ScavTrap::attack(const std::string& target)
 		<< " points of damage!"
 		<< std::endl;
 }
+
 void	ScavTrap::guardGate()
 {
 	std::cout << "ScavTrap " << name << " is now in Gate keeper mode." << std::endl;
-}
-
-ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
-{
-	std::cout << "ScavTrap " << name << " is copied." << std::endl;
-}
-ScavTrap&	ScavTrap::operator=(const ScavTrap& other)
-{
-	if (this != &other)
-		ClapTrap::operator=(other);
-	std::cout << "ScavTrap " << name << " is assigned." << std::endl;
-	return *this;
 }

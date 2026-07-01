@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mipang <mipang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/14 18:10:46 by mipang            #+#    #+#             */
-/*   Updated: 2026/04/14 19:15:25 by mipang           ###   ########.fr       */
+/*   Created: 2025/11/21 22:21:01 by mipang            #+#    #+#             */
+/*   Updated: 2025/11/23 21:52:39 by mipang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#include "PhoneBook.hpp"
 
-#include "ClapTrap.hpp"
+int	main()
+{
+	Phonebook pb;
+	std::string	cmd;
 
-class ScavTrap: public ClapTrap{
-	public:
-		ScavTrap();
-		~ScavTrap();
-		ScavTrap(const std::string& name);
-		ScavTrap(const ScavTrap& other);
-		ScavTrap&	operator=(const ScavTrap& other);
-		void	attack(const std::string& target);
-		void	guardGate();
-};
-
-# endif
+	pb = Phonebook();
+	while (true)
+	{
+		std::cout << "Please enter command: ADD, SEARCH, EXIT.\n" ;
+		if (!std::getline(std::cin, cmd))
+			break ;
+		if (cmd == "ADD")
+			pb.addcontact();
+		else if (cmd == "SEARCH")
+			pb.search();
+		else if (cmd == "EXIT")
+			break ;
+		else
+			std::cout << "Command not valid\n";
+	}
+	return (0);
+}

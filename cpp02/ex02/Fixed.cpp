@@ -118,7 +118,7 @@ Fixed	Fixed::operator++(int)
 	_rawBits ++;
 	return (temp);
 }
-Fixed	Fixed::operator++()
+Fixed&	Fixed::operator++()
 {
 	_rawBits ++;
 	return (*this);
@@ -131,7 +131,7 @@ Fixed	Fixed::operator--(int)
 	return (temp);
 }
 
-Fixed	Fixed::operator--()
+Fixed&	Fixed::operator--()
 {
 	_rawBits --;
 	return (*this);

@@ -1,15 +1,17 @@
-NAME = fragtrap
+NAME = account
 CXX = c++
 CXXFLAGS = -Wextra -Werror -Wall -std=c++98
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
-OBJ = $(SRC:.cpp=.o)
+HEADER = Account.hpp
+SRC = Account.cpp tests.cpp 
+
+OBJ =$(SRC:.cpp=.o)
 
 all:$(NAME)
 
 $(NAME):$(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-%.o:%.cpp ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+%.o:%.cpp $(HEADER)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
@@ -20,4 +22,4 @@ fclean:clean
 
 re:fclean all
 
-.PHONY:all re clean fclean
+.PHONY:all clean fclean re

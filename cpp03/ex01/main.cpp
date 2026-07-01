@@ -14,29 +14,34 @@
 
 int main()
 {
-	std::cout << "----- Default constructor test -----" << std::endl;
-	ScavTrap a;
+	ScavTrap unnamed;
+	ScavTrap serena("Serena");
+	ScavTrap keeper("Keeper");
 
-	std::cout << "\n----- Parameter constructor test -----" << std::endl;
-	ScavTrap b("Serena");
+	std::cout << "\nSerena checks the front door." << std::endl;
+	serena.attack("a rusty ClapTrap");
+	serena.takeDamage(34);
+	serena.beRepaired(10);
+	serena.guardGate();
 
-	std::cout << "\n----- Attack test -----" << std::endl;
-	b.attack("enemy");
+	std::cout << "\nKeeper has a shorter day." << std::endl;
+	keeper.guardGate();
+	keeper.attack("a loud visitor");
+	keeper.takeDamage(120);
+	keeper.attack("anyone");
+	keeper.beRepaired(20);
 
-	std::cout << "\n----- GuardGate test -----" << std::endl;
-	b.guardGate();
+	std::cout << "\nCopies should still know how to guard." << std::endl;
+	ScavTrap copy(serena);
+	unnamed = copy;
+	unnamed.guardGate();
+	unnamed.attack("a loose screw");
+	unnamed.takeDamage(15);
 
-	std::cout << "\n----- Copy constructor test -----" << std::endl;
-	ScavTrap c(b);
+	std::cout << "\nSerena's copy spends all remaining energy on the gate." << std::endl;
+	for (int i = 0; i < 50; i++)
+		copy.attack("the gate");
 
-	std::cout << "\n----- Assignment operator test -----" << std::endl;
-	ScavTrap d;
-	d = b;
-
-	std::cout << "\n----- Multiple attacks (energy test) -----" << std::endl;
-	for (int i = 0; i < 55; i++)
-		b.attack("target");
-
-	std::cout << "\n----- End of program -----" << std::endl;
+	std::cout << std::endl;
 	return 0;
 }

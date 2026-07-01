@@ -14,22 +14,39 @@
 
 int main()
 {
-    std::cout << "----- Construction -----" << std::endl;
-    FragTrap a("Alice");
+	FragTrap alice("Alice");
+	FragTrap default_frag;
 
-    std::cout << "\n----- Basic actions -----" << std::endl;
-    a.attack("enemy");
-    a.takeDamage(20);
-    a.beRepaired(10);
+	std::cout << "\nAlice warms up." << std::endl;
+	alice.attack("training dummy");
+	alice.takeDamage(42);
+	alice.beRepaired(12);
+	alice.highFivesGuys();
 
-    std::cout << "\n----- Special ability -----" << std::endl;
-    a.highFivesGuys();
+	std::cout << "\nThe default FragTrap gets a turn too." << std::endl;
+	default_frag.attack("old target");
+	default_frag.takeDamage(99);
+	default_frag.beRepaired(1);
+	default_frag.highFivesGuys();
 
-    std::cout << "\n----- Copy test -----" << std::endl;
-    FragTrap b(a);
-    FragTrap c;
-    c = a;
+	std::cout << "\nCopying Alice before trying a rougher hit." << std::endl;
+	FragTrap twin(alice);
+	FragTrap spare;
 
-    std::cout << "\n----- End of program -----" << std::endl;
-    return 0;
+	spare = twin;
+	spare.attack("another dummy");
+	spare.highFivesGuys();
+
+	std::cout << "\nA heavy hit should stop Alice from doing anything else." << std::endl;
+	alice.takeDamage(200);
+	alice.attack("one last dummy");
+	alice.beRepaired(50);
+	alice.highFivesGuys();
+
+	std::cout << "\nTwin still has enough energy for a few more swings." << std::endl;
+	for (int i = 0; i < 5; i++)
+		twin.attack("practice wall");
+
+	std::cout << std::endl;
+	return 0;
 }

@@ -12,6 +12,15 @@
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap()
+{
+	this -> name = "default";
+	this -> hit_points = 10;
+	this -> energy_points = 10;
+	this -> attack_damage = 0;
+	std::cout << "ClapTrap " << name << " is created." << std::endl;
+}
+
 ClapTrap::ClapTrap(const std::string& name)
 {
 	this -> name = name;
@@ -28,7 +37,10 @@ ClapTrap::~ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
-	*this = other;
+	this -> name = other.name;
+	this -> hit_points = other.hit_points;
+	this -> energy_points = other.energy_points;
+	this -> attack_damage = other.attack_damage;
 	std::cout << "ClapTrap " << name << " is copied." << std::endl;
 }
 ClapTrap&	ClapTrap::operator=(const ClapTrap& other)
@@ -48,7 +60,7 @@ void	ClapTrap::attack(const std::string& target)
 {
 	if (hit_points <= 0 || energy_points <= 0)
 	{
-		std::cout << "ClapTrap "<< name << " can not attack." << std::endl;
+		std::cout << "ClapTrap " << name << " can not attack." << std::endl;
 		return ;
 	}
 
@@ -56,11 +68,11 @@ void	ClapTrap::attack(const std::string& target)
 
 	std::cout << "ClapTrap "
 		<< name
-		<< " attacks, "
+		<< " attacks "
 		<< target
-		<<" causing "
+		<< ", causing "
 		<< attack_damage
-		<< " points of damage."
+		<< " points of damage!"
 		<< std::endl;
 }
 
@@ -90,10 +102,11 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (hit_points <=0 || energy_points <= 0)
 	{
-		std::cout << "ClapTrap " << name << " can not repaie. No energy." << std::endl;
+		std::cout << "ClapTrap " << name << " can not be repaired." << std::endl;
 		return ;
 	}
 	energy_points --;
 	hit_points += amount;
-	std::cout << "ClapTrap " << name << " has repaired " << amount << " points." << std::endl;
+	std::cout << "ClapTrap " << name << " repairs itself, gaining "
+		<< amount << " hit points." << std::endl;
 }

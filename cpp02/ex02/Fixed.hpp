@@ -46,9 +46,9 @@ class Fixed{
 		Fixed	operator/(const Fixed& other) const;
 
 		Fixed	operator++(int);
-		Fixed	operator++();
+		Fixed&	operator++();
 		Fixed	operator--(int);
-		Fixed	operator--();
+		Fixed&	operator--();
 
 		static Fixed&	max(Fixed& a, Fixed& b);
 		static const Fixed&	max(const Fixed& a, const Fixed& b);

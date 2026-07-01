@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mipang <mipang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/14 18:10:46 by mipang            #+#    #+#             */
-/*   Updated: 2026/04/14 19:15:25 by mipang           ###   ########.fr       */
+/*   Created: 2026/05/09 15:16:55 by mipang            #+#    #+#             */
+/*   Updated: 2026/05/09 15:25:53 by mipang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#include "Brain.hpp"
+#include <iostream>
 
-#include "ClapTrap.hpp"
+Brain::Brain()
+{
+	std::cout << "Brain constructor" << std::endl;
+}
 
-class ScavTrap: public ClapTrap{
-	public:
-		ScavTrap();
-		~ScavTrap();
-		ScavTrap(const std::string& name);
-		ScavTrap(const ScavTrap& other);
-		ScavTrap&	operator=(const ScavTrap& other);
-		void	attack(const std::string& target);
-		void	guardGate();
-};
+Brain::~Brain()
+{
+	std::cout << "Brain destructor" << std::endl;
+}
 
-# endif
+Brain::Brain(const Brain& other)
+{
+	*this = other;
+}
+
+Brain&	Brain::operator=(const Brain& other)
+{
+	if (this != &other)
+	{
+		for (int i = 0; i < 100; i ++)
+			this -> ideas[i] = other.ideas[i];
+	}
+	return (*this);
+}

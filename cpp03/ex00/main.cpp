@@ -12,39 +12,37 @@
 
 #include "ClapTrap.hpp"
 
-#include "ClapTrap.hpp"
-
 int main()
 {
-    std::cout << "=== Creating ClapTraps ===" << std::endl;
-    ClapTrap hero("Hero");
-    ClapTrap enemy("Enemy");
+	ClapTrap nobody;
+	ClapTrap bob("Bob");
+	ClapTrap jim("Jim");
 
-    std::cout << "\n=== Basic Attack ===" << std::endl;
-    hero.attack("Enemy");
-    enemy.takeDamage(0);
+	std::cout << "\nBob starts with the easy part." << std::endl;
+	bob.attack("Jim");
+	jim.takeDamage(0);
+	jim.takeDamage(4);
+	jim.beRepaired(2);
 
-    std::cout << "\n=== Multiple Attacks ===" << std::endl;
-    hero.attack("Enemy");
-    hero.attack("Enemy");
-    hero.attack("Enemy");
+	std::cout << "\nJim does not survive the second round." << std::endl;
+	jim.takeDamage(20);
+	jim.attack("Bob");
+	jim.beRepaired(1);
 
-    std::cout << "\n=== Enemy Takes Damage ===" << std::endl;
-    enemy.takeDamage(5);
-    enemy.takeDamage(10);
+	std::cout << "\nThe default one also joins for a second." << std::endl;
+	nobody.attack("Bob");
+	nobody.beRepaired(3);
+	nobody.takeDamage(12);
 
-    std::cout << "\n=== Try Attacking When Dead ===" << std::endl;
-    enemy.attack("Hero");
+	std::cout << "\nChecking copy and assignment before Bob runs out of energy." << std::endl;
+	ClapTrap bob_copy(bob);
+	nobody = bob_copy;
+	nobody.attack("Jim");
 
-    std::cout << "\n=== Repair Test ===" << std::endl;
-    hero.beRepaired(3);
-    hero.beRepaired(5);
+	std::cout << "\nBob keeps going until the battery is empty." << std::endl;
+	for (int i = 0; i < 11; i++)
+		bob.attack("Jim");
 
-    std::cout << "\n=== Energy Exhaustion Test ===" << std::endl;
-    for (int i = 0; i < 15; i++)
-        hero.attack("Enemy");
-
-    std::cout << "\n=== End of Test ===" << std::endl;
-
-    return 0;
+	std::cout << std::endl;
+	return 0;
 }
